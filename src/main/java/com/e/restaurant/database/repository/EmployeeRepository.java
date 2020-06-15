@@ -1,9 +1,9 @@
 package com.e.restaurant.database.repository;
 
-import com.e.restaurant.database.entity.Bill;
+import com.e.restaurant.database.entity.Employee;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface BillRepository extends CrudRepository<Bill, UUID> {
+public interface EmployeeRepository extends CrudRepository<Employee, UUID> {
 }
