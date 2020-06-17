@@ -5,6 +5,8 @@ import com.e.restaurant.database.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository("restaurantMysql")
 public class RestaurantDatabaseDao implements RestaurantDao {
 
@@ -23,6 +25,11 @@ public class RestaurantDatabaseDao implements RestaurantDao {
     @Override
     public Iterable<Restaurant> getRestaurants() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Restaurant> getRestaurant(String name) {
+        return repository.findFirstByName(name);
     }
 
 
