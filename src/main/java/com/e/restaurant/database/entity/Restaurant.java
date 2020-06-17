@@ -24,6 +24,8 @@ public class Restaurant {
     @Column(nullable = false, unique = true, length = 45)
     private String name;
 
+    public Restaurant() {
+    }
 
     public Restaurant(@NonNull String name) {
         this.name = name;
