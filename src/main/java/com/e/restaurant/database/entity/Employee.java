@@ -1,6 +1,8 @@
 package com.e.restaurant.database.entity;
 
 import com.e.restaurant.database.enumerate.EmployeeType;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,11 +12,14 @@ import java.util.UUID;
 @Entity
 public class Employee {
 
-    @EmbeddedId
-    private EmployeeId id;
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Type(type = "uuid-char")
+    @Column(length = 36, unique = true)
+    private UUID id;
 
-    @MapsId("id")
-    @OneToOne
+    @OneToOne(optional = false)
     private User user;
 
     @Column(length = 45)
@@ -29,14 +34,7 @@ public class Employee {
     @ManyToMany(mappedBy = "employees")
     private Set<Bill> bills;
 
-    @Embeddable
-    public static class EmployeeId implements Serializable {
-        UUID id;
-    }
 
-    public void setId(EmployeeId id) {
-        this.id = id;
-    }
 
     public User getUser() {
         return user;

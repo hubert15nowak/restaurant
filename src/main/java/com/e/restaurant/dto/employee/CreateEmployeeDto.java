@@ -21,7 +21,7 @@ public class CreateEmployeeDto {
         user.setRole(role);
         Employee employee = new Employee();
         employee.setName(name);
-        employee.setName(surname);
+        employee.setSurname(surname);
         employee.setUser(user);
         return employee;
     }
