@@ -1,6 +1,7 @@
 package com.e.restaurant.dto.employee;
 
 import com.e.restaurant.database.entity.Employee;
+import com.e.restaurant.database.entity.Restaurant;
 import com.e.restaurant.database.entity.User;
 import com.e.restaurant.database.enumerate.UserRole;
 import com.e.restaurant.security.PasswordConfig;
@@ -23,6 +24,7 @@ public class CreateEmployeeDto {
         employee.setName(name);
         employee.setSurname(surname);
         employee.setUser(user);
+        employee.setRestaurant(new Restaurant(restaurant));
         return employee;
     }
 
