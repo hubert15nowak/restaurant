@@ -19,6 +19,18 @@ public class DishType {
     @Column(length = 45, nullable = false, unique = true)
     String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
     @ManyToMany
     private Set<Dish> dishSet;
 }
