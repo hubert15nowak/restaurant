@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -26,12 +27,12 @@ public class EmployeeService {
         this.restaurantService = restaurantService;
     }
 
-    public void createEmployee(CreateEmployeeDto createEmployeeDto) throws DataIntegrityViolationException {
-        Optional<User> optionalUser = userService.getUser(createEmployeeDto.login);
+    @Transactional
+    protected void createEmployee(Employee employee) throws DataIntegrityViolationException {
+        Optional<User> optionalUser = userService.getUser(employee.getUser().getLogin());
         if (optionalUser.isEmpty()) {
-            Optional<Restaurant> optionalRestaurant = restaurantService.getRestaurant(createEmployeeDto.restaurant);
+            Optional<Restaurant> optionalRestaurant = restaurantService.getRestaurant(employee.getRestaurant().getName());
             if (optionalRestaurant.isPresent()) {
-                Employee employee = createEmployeeDto.mapToEmployee();
                 userService.addUser(employee.getUser());
                 employee.setRestaurant(optionalRestaurant.get());
                 employeeDao.addEmployee(employee);
@@ -41,5 +42,9 @@ public class EmployeeService {
             }
         }
         throw new DataIntegrityViolationException("login is used");
+    }
+
+    public void createEmployeeFromDto(CreateEmployeeDto createEmployeeDto) throws DataIntegrityViolationException {
+        createEmployee(createEmployeeDto.mapToEmployee());
     }
 }
