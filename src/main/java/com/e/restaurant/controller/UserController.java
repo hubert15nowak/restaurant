@@ -36,4 +36,14 @@ public class UserController {
     public @ResponseBody Iterable<UserDto> getUsers() {
         return userService.getUsers();
     }
+
+    @GetMapping("/{login}")
+    public @ResponseBody ResponseEntity<UserDto> getUser(@PathVariable String login) {
+        UserDto userDto = userService.getUser(login);
+        if(userDto != null) {
+            return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<UserDto>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

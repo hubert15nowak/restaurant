@@ -9,4 +9,6 @@ public interface UserDao {
     public Optional<User> getUserByLogin(String login);
     public void saveUser(User user);
     public Iterable<User> getUsers();
+
+    Optional<User> getUser(String login);
 }

@@ -8,7 +8,6 @@ public class UserDto {
     public String password;
     public UserRole role;
 
-
     public UserDto(String login, String password, UserRole role) {
         this.login = login;
         this.password = password;

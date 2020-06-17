@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface UserRepository extends CrudRepository<User, UUID> {
     Optional<User> findUserByLogin(String login);
-    
+    Optional<User> findFirstByLogin(String login);
 }

@@ -31,4 +31,9 @@ public class UserDatabaseDao implements UserDao {
     public Iterable<User> getUsers() {
         return repository.findAll();
     }
+
+    @Override
+    public Optional<User> getUser(String login) {
+        return repository.findFirstByLogin(login);
+    }
 }
