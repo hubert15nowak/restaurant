@@ -28,13 +28,14 @@ public class EmployeeService {
 
     public void createEmployee(CreateEmployeeDto createEmployeeDto) throws DataIntegrityViolationException {
         Optional<User> optionalUser = userService.getUser(createEmployeeDto.login);
-        if (optionalUser.isPresent()) {
+        if (optionalUser.isEmpty()) {
             Optional<Restaurant> optionalRestaurant = restaurantService.getRestaurant(createEmployeeDto.restaurant);
             if (optionalRestaurant.isPresent()) {
                 Employee employee = createEmployeeDto.mapToEmployee();
                 userService.addUser(employee.getUser());
                 employee.setRestaurant(optionalRestaurant.get());
                 employeeDao.addEmployee(employee);
+                return;
             } else {
                 throw new DataIntegrityViolationException("restaurant does not exists");
             }
