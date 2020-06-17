@@ -33,6 +33,10 @@ public class Bill {
     @ManyToMany
     private Set<Discount> discountApplied;
 
+    @OneToMany
+    @JoinColumn(name = "dish_id")
+    private Set<BillDish> dishes;
+
     @ManyToMany
     private Set<Employee> employees;
 }
