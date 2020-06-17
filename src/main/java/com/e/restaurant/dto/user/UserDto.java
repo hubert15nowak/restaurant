@@ -1,4 +1,4 @@
-package com.e.restaurant.dto;
+package com.e.restaurant.dto.user;
 
 import com.e.restaurant.database.entity.User;
 import com.e.restaurant.database.enumerate.UserRole;

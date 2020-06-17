@@ -1,8 +1,8 @@
 package com.e.restaurant.service;
 
 import com.e.restaurant.dao.UserDao;
-import com.e.restaurant.dto.CreateUserDto;
-import com.e.restaurant.dto.UserDto;
+import com.e.restaurant.dto.user.CreateUserDto;
+import com.e.restaurant.dto.user.UserDto;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
