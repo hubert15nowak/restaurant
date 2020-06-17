@@ -18,7 +18,7 @@ public class CreateUserDto {
     public User mapToDao() {
         User user = new User();
         user.setLogin(login);
-        user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(PasswordConfig.STRENGTH)));
+        user.setPassword(PasswordConfig.hashPassword(password));
         user.setRole(role);
         return user;
     }
