@@ -1,16 +1,23 @@
 package com.e.restaurant.dao;
 
-import com.e.restaurant.database.repository.BillRepository;
+import com.e.restaurant.database.entity.Employee;
+import com.e.restaurant.database.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository("employeeMysql")
 public class EmployeeDatabaseDao implements EmployeeDao {
 
-    private BillRepository repository;
+    private EmployeeRepository repository;
 
     @Autowired
-    public EmployeeDatabaseDao(BillRepository repository) {
+    public EmployeeDatabaseDao(EmployeeRepository repository) {
         this.repository = repository;
+    }
+
+
+    @Override
+    public void addEmployee(Employee employee) {
+        repository.save(employee);
     }
 }
