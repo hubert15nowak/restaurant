@@ -1,7 +1,7 @@
 package com.e.restaurant.controller;
 
-import com.e.restaurant.dto.CreateUserDto;
-import com.e.restaurant.dto.UserDto;
+import com.e.restaurant.dto.user.CreateUserDto;
+import com.e.restaurant.dto.user.UserDto;
 import com.e.restaurant.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
