@@ -25,7 +25,7 @@ public class UserService {
 
 
     public void createUser(CreateUserDto user) throws DataIntegrityViolationException {
-        userDao.saveUser(user.mapToDao());
+        addUser(user.mapToDao());
     }
 
     public Iterable<UserDto> getUsers() {
@@ -34,8 +34,16 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDto getUser(String login) {
-        Optional<User> optionalUser = userDao.getUser(login);
+    protected void addUser(User user) throws DataIntegrityViolationException{
+        userDao.saveUser(user);
+    }
+    
+    protected Optional<User> getUser(String login) {
+        return userDao.getUser(login);
+    }
+
+    public UserDto getUserDto(String login) {
+        Optional<User> optionalUser = getUser(login);
         return optionalUser.map(UserDto::mapToDto).orElse(null);
     }
 }

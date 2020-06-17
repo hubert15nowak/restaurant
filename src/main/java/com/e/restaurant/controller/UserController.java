@@ -39,7 +39,7 @@ public class UserController {
 
     @GetMapping("/{login}")
     public @ResponseBody ResponseEntity<UserDto> getUser(@PathVariable String login) {
-        UserDto userDto = userService.getUser(login);
+        UserDto userDto = userService.getUserDto(login);
         if(userDto != null) {
             return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
         } else {
