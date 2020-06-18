@@ -1,16 +1,16 @@
 package com.e.restaurant.dao;
 
-import com.e.restaurant.database.repository.BillRepository;
+import com.e.restaurant.database.repository.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository("discountMysql")
 public class DiscountDatabaseDao implements DiscountDao {
 
-    private BillRepository repository;
+    private DiscountRepository repository;
 
     @Autowired
-    public DiscountDatabaseDao(BillRepository repository) {
+    public DiscountDatabaseDao(DiscountRepository repository) {
         this.repository = repository;
     }
 }
