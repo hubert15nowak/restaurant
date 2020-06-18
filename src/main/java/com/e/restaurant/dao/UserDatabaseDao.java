@@ -18,6 +18,10 @@ public class UserDatabaseDao implements UserDao {
         this.repository = repository;
     }
 
+    @Override
+    public Optional<User> getUserByUsername(String username) {
+        return repository.findUserByUsername(username);
+    }
 
     @Override
     public void saveUser(User user) {

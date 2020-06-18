@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public interface UserDao {
 
+    public Optional<User> getUserByUsername(String username);
     public void saveUser(User user);
     public Iterable<User> getUsers();
 
