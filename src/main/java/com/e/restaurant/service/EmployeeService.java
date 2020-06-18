@@ -5,6 +5,7 @@ import com.e.restaurant.database.entity.Employee;
 import com.e.restaurant.database.entity.Restaurant;
 import com.e.restaurant.database.entity.User;
 import com.e.restaurant.dto.employee.CreateEmployeeDto;
+import com.e.restaurant.dto.employee.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class EmployeeService {
@@ -29,7 +32,7 @@ public class EmployeeService {
 
     @Transactional
     protected void createEmployee(Employee employee) throws DataIntegrityViolationException {
-        Optional<User> optionalUser = userService.getUser(employee.getUser().getLogin());
+        Optional<User> optionalUser = userService.getUser(employee.getUser().getId());
         if (optionalUser.isEmpty()) {
             Optional<Restaurant> optionalRestaurant = restaurantService.getRestaurant(employee.getRestaurant().getName());
             if (optionalRestaurant.isPresent()) {
@@ -46,5 +49,12 @@ public class EmployeeService {
 
     public void createEmployeeFromDto(CreateEmployeeDto createEmployeeDto) throws DataIntegrityViolationException {
         createEmployee(createEmployeeDto.mapToEmployee());
+    }
+
+
+    public Iterable<EmployeeDto> getEmployees() {
+        return StreamSupport.stream(employeeDao.getEmployees().spliterator(), true)
+                .map(EmployeeDto::mapToDto)
+                .collect(Collectors.toList());
     }
 }

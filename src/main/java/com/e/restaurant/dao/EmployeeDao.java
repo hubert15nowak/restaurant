@@ -5,4 +5,6 @@ import com.e.restaurant.database.entity.Employee;
 public interface EmployeeDao {
 
     public void addEmployee(Employee employee);
+
+    Iterable<Employee> getEmployees();
 }

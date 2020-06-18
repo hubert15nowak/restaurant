@@ -2,6 +2,7 @@ package com.e.restaurant.dao;
 
 import com.e.restaurant.database.entity.Employee;
 import com.e.restaurant.database.repository.EmployeeRepository;
+import com.e.restaurant.dto.employee.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +20,10 @@ public class EmployeeDatabaseDao implements EmployeeDao {
     @Override
     public void addEmployee(Employee employee) {
         repository.save(employee);
+    }
+
+    @Override
+    public Iterable<Employee> getEmployees() {
+        return repository.findAll();
     }
 }

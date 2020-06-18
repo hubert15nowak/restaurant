@@ -1,11 +1,10 @@
 package com.e.restaurant.database.entity;
 
-import com.e.restaurant.database.enumerate.EmployeeType;
+import com.e.restaurant.database.enumerate.UserRole;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -81,10 +80,14 @@ public class Employee {
     }
 
     public String getLogin() {
-        return user.getLogin();
+        return user.getUsername();
     }
 
     public String getPassword() {
         return user.getPassword();
+    }
+
+    public UserRole getRole() {
+        return getUser().getRole();
     }
 }
