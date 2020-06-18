@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
 public class Storeroom {
 
     @Id
@@ -17,11 +18,10 @@ public class Storeroom {
 
     private double quantity;
 
-    @OneToOne
+    @OneToOne(mappedBy = "storeroom")
     private FeedStock feedStock;
 
-    @ManyToOne
-    @Column(nullable = false)
+    @ManyToOne(optional = false)
     private Unit unit;
 
 

@@ -32,5 +32,67 @@ public class Dish {
     @ManyToMany(mappedBy = "dishSet")
     private Set<DishType> dishType;
 
+    public Dish() {
+    }
 
+    public Dish(String name, double price, boolean inMenu, Restaurant restaurant, Set<DishType> dishType) {
+        this.name = name;
+        this.price = price;
+        this.inMenu = inMenu;
+        this.restaurant = restaurant;
+        this.dishType = dishType;
+    }
+
+    public Dish(UUID id, String name, double price, boolean inMenu, Restaurant restaurant, Set<DishType> dishType) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.inMenu = inMenu;
+        this.restaurant = restaurant;
+        this.dishType = dishType;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean isInMenu() {
+        return inMenu;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public Set<DishType> getDishTypes() {
+        return dishType;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setInMenu(boolean inMenu) {
+        this.inMenu = inMenu;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public void setDishType(Set<DishType> dishType) {
+        this.dishType = dishType;
+    }
 }

@@ -3,6 +3,7 @@ package com.e.restaurant.database.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,4 +23,36 @@ public class Restaurant {
 
     @Column(nullable = false, unique = true, length = 45)
     private String name;
+
+    public Restaurant() {
+    }
+
+    public Restaurant(@NonNull String name) {
+        this.name = name;
+    }
+
+    public Restaurant(UUID id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Restaurant(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
