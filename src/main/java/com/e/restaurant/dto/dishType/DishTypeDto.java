@@ -12,6 +12,7 @@ public class DishTypeDto {
     public String name;
     public Set<Dish> dishSet;
 
+
     public DishTypeDto(UUID id, String name) {
         this.id = id;
         this.name = name;
