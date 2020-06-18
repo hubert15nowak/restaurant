@@ -7,11 +7,18 @@ import java.io.Serializable;
 public class FeedStock {
 
     @EmbeddedId
-    private FeedstockPK id;
+    private FeedStockPK id;
 
 
     @OneToOne
     private Storeroom storeroom;
+
+    public FeedStock() {
+    }
+
+    public FeedStock(FeedStockPK feedStock) {
+        this.id = feedStock;
+    }
 
 
     public String getName() {
@@ -30,7 +37,7 @@ public class FeedStock {
 
 
     @Embeddable
-    public static class FeedstockPK implements Serializable {
+    public static class FeedStockPK implements Serializable {
 
         @Column(length = 45)
         protected String name;
@@ -44,7 +51,7 @@ public class FeedStock {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            FeedstockPK that = (FeedstockPK) o;
+            FeedStockPK that = (FeedStockPK) o;
 
             if (Double.compare(that.price, price) != 0) return false;
             if (!name.equals(that.name)) return false;
@@ -73,5 +80,33 @@ public class FeedStock {
         public Restaurant getRestaurant() {
             return restaurant;
         }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public void setRestaurant(Restaurant restaurant) {
+            this.restaurant = restaurant;
+        }
+    }
+
+    public FeedStockPK getId() {
+        return id;
+    }
+
+    public Storeroom getStoreroom() {
+        return storeroom;
+    }
+
+    public void setId(FeedStockPK id) {
+        this.id = id;
+    }
+
+    public void setStoreroom(Storeroom storeroom) {
+        this.storeroom = storeroom;
     }
 }
