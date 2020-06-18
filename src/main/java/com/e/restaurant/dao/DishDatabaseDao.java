@@ -1,16 +1,35 @@
 package com.e.restaurant.dao;
 
-import com.e.restaurant.database.repository.BillRepository;
+import com.e.restaurant.database.entity.Dish;
+import com.e.restaurant.database.repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository("dishMysql")
 public class DishDatabaseDao implements DishDao {
 
-    private BillRepository repository;
+    private DishRepository repository;
 
     @Autowired
-    public DishDatabaseDao(BillRepository repository) {
+    public DishDatabaseDao(DishRepository repository) {
         this.repository = repository;
+    }
+
+    @Override
+    public void saveDish(Dish dish) {
+        repository.save(dish);
+    }
+
+    @Override
+    public Optional<Dish> getDish(UUID id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Iterable<Dish> getDishs() {
+        return repository.findAll();
     }
 }

@@ -40,8 +40,6 @@ public class RestaurantTable {
     public RestaurantTable() {
     }
 
-    ;
-
 
     public UUID getId() {
         return id;

@@ -17,4 +17,8 @@ public class UserDto {
     public static UserDto mapToDto(User user) {
         return new UserDto(user.getUsername(), user.getPassword(), user.getRole());
     }
+
+    public User mapToDao() {
+        return new User(username, password, role);
+    }
 }
