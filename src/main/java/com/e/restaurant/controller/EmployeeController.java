@@ -24,7 +24,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public @ResponseBody ResponseEntity<CreateEmployeeDto> createRestaurant(@RequestBody CreateEmployeeDto createEmployeeDto) {
+    public @ResponseBody ResponseEntity<CreateEmployeeDto> createEmployee(@RequestBody CreateEmployeeDto createEmployeeDto) {
         try {
             employeeService.createEmployeeFromDto(createEmployeeDto);
         } catch (DataIntegrityViolationException e) {
