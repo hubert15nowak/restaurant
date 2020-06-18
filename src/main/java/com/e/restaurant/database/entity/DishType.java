@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -40,4 +41,11 @@ public class DishType {
 
     @ManyToMany
     private Set<Dish> dishSet;
+
+    public Set<Dish> getDishSet() {
+        if (dishSet == null) {
+           return new HashSet<>();
+        }
+        return dishSet;
+    }
 }

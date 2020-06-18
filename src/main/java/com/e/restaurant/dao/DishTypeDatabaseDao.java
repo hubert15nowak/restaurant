@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository("dishTypeMysql")
 public class DishTypeDatabaseDao implements DishTypeDao {
@@ -23,9 +24,10 @@ public class DishTypeDatabaseDao implements DishTypeDao {
     }
 
     @Override
-    public Optional<DishType> getDishType(String name) {
-        return repository.findFirstByName(name);
+    public Optional<DishType> getDishType(UUID id) {
+        return repository.findById(id);
     }
+
 
     @Override
     public Iterable<DishType> getDishTypes() {

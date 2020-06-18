@@ -72,7 +72,7 @@ public class Dish {
         return restaurant;
     }
 
-    public Set<DishType> getDishType() {
+    public Set<DishType> getDishTypes() {
         return dishType;
     }
 

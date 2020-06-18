@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/v1/dish-type")
 public class DishTypeController {
@@ -38,10 +40,10 @@ public class DishTypeController {
         return dishTypeService.getDishTypes();
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/{uuid}")
     public @ResponseBody
-    ResponseEntity<DishTypeDto> getDishType(@PathVariable String name) {
-        DishTypeDto dishTypeDto = dishTypeService.getDishTypeDto(name);
+    ResponseEntity<DishTypeDto> getDishType(@PathVariable UUID uuid) {
+        DishTypeDto dishTypeDto = dishTypeService.getDishTypeDto(uuid);
         if (dishTypeDto != null) {
             return new ResponseEntity<DishTypeDto>(dishTypeDto, HttpStatus.OK);
         } else {

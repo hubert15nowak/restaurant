@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -37,12 +38,12 @@ public class DishTypeService {
         dishTypeDao.saveDishType(dishType);
     }
 
-    protected Optional<DishType> getDishType(String name) {
-        return dishTypeDao.getDishType(name);
+    protected Optional<DishType> getDishType(UUID id) {
+        return dishTypeDao.getDishType(id);
     }
 
-    public DishTypeDto getDishTypeDto(String name) {
-        Optional<DishType> optionalDishType = getDishType(name);
+    public DishTypeDto getDishTypeDto(UUID id) {
+        Optional<DishType> optionalDishType = getDishType(id);
         return optionalDishType.map(DishTypeDto::mapToDto).orElse(null);
     }
 }
