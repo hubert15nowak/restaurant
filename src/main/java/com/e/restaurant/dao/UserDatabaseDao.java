@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository("userMysql")
 public class UserDatabaseDao implements UserDao {
@@ -17,10 +18,6 @@ public class UserDatabaseDao implements UserDao {
         this.repository = repository;
     }
 
-    @Override
-    public Optional<User> getUserByLogin(String login) {
-        return repository.findUserByLogin(login);
-    }
 
     @Override
     public void saveUser(User user) {
@@ -33,7 +30,7 @@ public class UserDatabaseDao implements UserDao {
     }
 
     @Override
-    public Optional<User> getUser(String login) {
-        return repository.findFirstByLogin(login);
+    public Optional<User> getUser(UUID id) {
+        return repository.findFirstById(id);
     }
 }

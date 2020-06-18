@@ -38,12 +38,12 @@ public class UserService {
         userDao.saveUser(user);
     }
     
-    protected Optional<User> getUser(String login) {
-        return userDao.getUser(login);
+    protected Optional<User> getUser(UUID id) {
+        return userDao.getUser(id);
     }
 
-    public UserDto getUserDto(String login) {
-        Optional<User> optionalUser = getUser(login);
+    public UserDto getUserDto(UUID id) {
+        Optional<User> optionalUser = getUser(id);
         return optionalUser.map(UserDto::mapToDto).orElse(null);
     }
 }

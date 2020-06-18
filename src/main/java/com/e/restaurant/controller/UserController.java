@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/v1/user")
 public class UserController {
@@ -27,23 +29,26 @@ public class UserController {
         try {
             userService.createUser(userDto);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<CreateUserDto>(userDto, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(userDto, HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<CreateUserDto>(userDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public @ResponseBody Iterable<UserDto> getUsers() {
+    public @ResponseBody
+    Iterable<UserDto> getUsers() {
         return userService.getUsers();
     }
 
-    @GetMapping("/{login}")
-    public @ResponseBody ResponseEntity<UserDto> getUser(@PathVariable String login) {
-        UserDto userDto = userService.getUserDto(login);
-        if(userDto != null) {
-            return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
+    @GetMapping("/{id}")
+    public @ResponseBody
+    ResponseEntity<UserDto> getUser(@PathVariable String id) {
+        UserDto userDto = userService.getUserDto(UUID.fromString(id));
+        if (userDto != null) {
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
         } else {
-            return new ResponseEntity<UserDto>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 }

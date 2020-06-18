@@ -8,7 +8,7 @@ import com.e.restaurant.security.PasswordConfig;
 
 public class CreateEmployeeDto {
 
-    public String login;
+    public String username;
     public String password;
     public UserRole role;
     public String name;
@@ -17,7 +17,7 @@ public class CreateEmployeeDto {
 
     public Employee mapToEmployee() {
         User user = new User();
-        user.setLogin(login);
+        user.setUsername(username);
         user.setPassword(PasswordConfig.hashPassword(password));
         user.setRole(role);
         Employee employee = new Employee();

@@ -18,7 +18,7 @@ public class User {
     private UUID id;
 
     @Column(length = 45, nullable = false, unique = true)
-    private String login;
+    private String username;
 
     @Column(length = 60, nullable = false)
     private String password;
@@ -33,8 +33,8 @@ public class User {
     //Getters
 
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String login) {
+        this.username = login;
     }
 
     public void setPassword(String password) {
@@ -53,8 +53,8 @@ public class User {
         return id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
