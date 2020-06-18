@@ -1,6 +1,5 @@
 package com.e.restaurant.dto.dishType;
 
-import com.e.restaurant.database.entity.Dish;
 import com.e.restaurant.database.entity.DishType;
 import com.e.restaurant.dto.dish.DishGroupDto;
 
