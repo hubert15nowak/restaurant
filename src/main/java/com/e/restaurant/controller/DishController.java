@@ -37,7 +37,7 @@ public class DishController {
     @GetMapping
     public @ResponseBody
     Iterable<DishDto> getDishs() {
-        return dishService.getDishs();
+        return dishService.getDishes();
     }
 
     @GetMapping("/{id}")

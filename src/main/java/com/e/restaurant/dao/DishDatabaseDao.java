@@ -29,7 +29,7 @@ public class DishDatabaseDao implements DishDao {
     }
 
     @Override
-    public Iterable<Dish> getDishs() {
+    public Iterable<Dish> getDishes() {
         return repository.findAll();
     }
 }

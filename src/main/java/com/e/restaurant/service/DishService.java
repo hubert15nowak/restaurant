@@ -26,8 +26,8 @@ public class DishService {
         addDish(dish.mapToDao());
     }
 
-    public Iterable<DishDto> getDishs() {
-        return StreamSupport.stream(dishDao.getDishs().spliterator(), true)
+    public Iterable<DishDto> getDishes() {
+        return StreamSupport.stream(dishDao.getDishes().spliterator(), true)
                 .map(DishDto::mapToDto)
                 .collect(Collectors.toList());
     }

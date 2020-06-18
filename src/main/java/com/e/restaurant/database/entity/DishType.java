@@ -19,6 +19,13 @@ public class DishType {
     @Column(length = 45, nullable = false, unique = true)
     String name;
 
+    public DishType() {
+    }
+
+    public DishType(UUID id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

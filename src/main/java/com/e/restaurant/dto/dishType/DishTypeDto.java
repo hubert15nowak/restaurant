@@ -18,7 +18,15 @@ public class DishTypeDto {
         this.name = name;
     }
 
+    public DishTypeDto(UUID id) {
+        this.id = id;
+    }
+
     public static DishTypeDto mapToDto(DishType dishType) {
         return new DishTypeDto(dishType.getId(), dishType.getName());
+    }
+
+    public DishType mapToDao() {
+        return new DishType(id);
     }
 }

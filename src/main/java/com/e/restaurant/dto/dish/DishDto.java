@@ -2,7 +2,9 @@ package com.e.restaurant.dto.dish;
 
 import com.e.restaurant.database.entity.Dish;
 import com.e.restaurant.dto.dishType.DishTypeDto;
+import com.e.restaurant.dto.dishType.DishTypeGroupDto;
 import com.e.restaurant.dto.restaurant.RestaurantDto;
+import com.e.restaurant.dto.restaurant.RestaurantGroupDto;
 
 import java.util.Set;
 import java.util.UUID;
@@ -14,8 +16,8 @@ public class DishDto {
     public String name;
     public double price;
     public boolean inMenu;
-    public RestaurantDto restaurant;
-    public Set<DishTypeDto> dishType;
+    public RestaurantGroupDto restaurant;
+    public Set<DishTypeGroupDto> dishType;
 
 
     public static DishDto mapToDto(Dish dish) {
@@ -24,11 +26,11 @@ public class DishDto {
                 dish.getName(),
                 dish.getPrice(),
                 dish.isInMenu(),
-                RestaurantDto.mapToDto(dish.getRestaurant()),
-                dish.getDishType().stream().map(DishTypeDto::mapToDto).collect(Collectors.toSet()));
+                RestaurantGroupDto.mapToDto(dish.getRestaurant()),
+                dish.getDishType().stream().map(DishTypeGroupDto::mapToDto).collect(Collectors.toSet()));
     }
 
-    public DishDto(UUID id, String name, double price, boolean inMenu, RestaurantDto restaurant, Set<DishTypeDto> dishType) {
+    public DishDto(UUID id, String name, double price, boolean inMenu, RestaurantGroupDto restaurant, Set<DishTypeGroupDto> dishType) {
         this.id = id;
         this.name = name;
         this.price = price;

@@ -10,5 +10,5 @@ public interface DishDao {
 
     Optional<Dish> getDish(UUID id);
 
-    Iterable<Dish> getDishs();
+    Iterable<Dish> getDishes();
 }
