@@ -20,9 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        Optional<User> user = userDao.getUserByLogin(login);
-        user.orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", login)));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userDao.getUserByUsername(username);
+        user.orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
         return new UserDetailsImpl(
                 user.get(),
                 AuthorityType.getAuthority(user.get().getRole()).getGrantedAuthorities());
