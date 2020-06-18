@@ -25,7 +25,7 @@ public class DishTypeService {
 
 
     public void createDishType(CreateDishTypeDto dishType) throws DataIntegrityViolationException {
-        addUser(dishType.mapToDao());
+        addDishType(dishType.mapToDao());
     }
 
     public Iterable<DishTypeDto> getDishTypes() {
@@ -34,7 +34,7 @@ public class DishTypeService {
                 .collect(Collectors.toList());
     }
 
-    protected void addUser(DishType dishType) throws DataIntegrityViolationException {
+    protected void addDishType(DishType dishType) throws DataIntegrityViolationException {
         dishTypeDao.saveDishType(dishType);
     }
 

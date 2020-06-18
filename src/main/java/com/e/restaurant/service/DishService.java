@@ -23,11 +23,10 @@ public class DishService {
     private final DishTypeService dishTypeService;
 
     @Autowired
-    public DishService(@Qualifier("dishMysql")DishDao dishDao, DishTypeService dishTypeService) {
+    public DishService(@Qualifier("dishMysql") DishDao dishDao, DishTypeService dishTypeService) {
         this.dishDao = dishDao;
         this.dishTypeService = dishTypeService;
     }
-
 
 
     public void createDish(CreateDishDto dish) throws DataIntegrityViolationException {
@@ -44,14 +43,16 @@ public class DishService {
     protected void addDish(Dish dish) throws DataIntegrityViolationException {
         HashSet<DishType> dishTypes = new HashSet<>();
         dish.getDishTypes().forEach(dishType -> {
-                    Optional<DishType> type = dishTypeService.getDishType(dishType.getId());
-                    if( type.isPresent()) {
-                        dishTypes.add(type.get());
-                        type.get().getDishSet().add(dish);
-                    }
-                });
+            Optional<DishType> type = dishTypeService.getDishType(dishType.getId());
+            type.ifPresent(dishTypes::add);
+        });
         dish.setDishType(dishTypes);
         dishDao.saveDish(dish);
+        dish.getDishTypes().forEach(dishType -> {
+
+            dishType.getDishSet().add(dish);
+            dishTypeService.addDishType(dishType);
+        });
     }
 
     protected Optional<Dish> getDish(UUID id) {
