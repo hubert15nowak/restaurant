@@ -29,6 +29,14 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Employee employee;
 
+    public User(String username, String password, UserRole role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User() {
+    }
 
     //Getters
 

@@ -33,6 +33,16 @@ public class Employee {
     @ManyToMany(mappedBy = "employees")
     private Set<Bill> bills;
 
+    public Employee(UUID id, String name, String surname, User user) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.user = user;
+    }
+
+    public Employee() {
+
+    }
 
 
     public User getUser() {
