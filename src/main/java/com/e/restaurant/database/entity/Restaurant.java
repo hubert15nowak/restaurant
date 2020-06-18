@@ -36,6 +36,10 @@ public class Restaurant {
         this.name = name;
     }
 
+    public Restaurant(UUID id) {
+        this.id = id;
+    }
+
     public UUID getId() {
         return id;
     }

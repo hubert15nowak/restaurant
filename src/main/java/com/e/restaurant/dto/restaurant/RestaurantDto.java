@@ -16,6 +16,10 @@ public class RestaurantDto {
         this.name = name;
     }
 
+    public RestaurantDto(UUID restaurant) {
+        id = restaurant;
+    }
+
     public Restaurant mapToDao() {
         return new Restaurant(id, name);
     }
