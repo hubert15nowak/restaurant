@@ -4,17 +4,20 @@ import com.e.restaurant.database.entity.Dish;
 import com.e.restaurant.database.entity.DishType;
 
 import java.util.Set;
+import java.util.UUID;
 
 public class DishTypeDto {
 
+    public UUID id;
     public String name;
     public Set<Dish> dishSet;
 
-    public DishTypeDto(String name) {
+    public DishTypeDto(UUID id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     public static DishTypeDto mapToDto(DishType dishType) {
-        return new DishTypeDto(dishType.getName());
+        return new DishTypeDto(dishType.getId(), dishType.getName());
     }
 }
